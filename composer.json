@@ -13,7 +13,7 @@
     "require": {
         "magento/framework": "*",
         "magento/module-checkout": "~100",
-        "magento/module-sales": "~102"
+        "magento/module-sales": "~102|~103"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.5",
