@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © 28Software (https://28software.com)
+ * See LICENSE for the license details.
+ */
+declare(strict_types = 1);
+
+use TESoftware\BuySafeGuarantee\ViewModel\Tracker;
+
+/** @var \Magento\Checkout\Block\Onepage\Success $block */
+/** @var Tracker $viewModel */
+
+$viewModel = $block->getViewModel();
+$orderId = $block->getOrderId();
+?>
+<!-- buySAFE Guarantee -->
+<script type="text/javascript" src="<?= /** @noEscape */ $viewModel->getScriptUrl() ?>" ></script>
+<script type="text/javascript" >
+    if( window._GUARANTEE && _GUARANTEE.Loaded ) {
+        _GUARANTEE.Guarantee.order = "<?= /** @noEscape */ $orderId ?>";
+        _GUARANTEE.Guarantee.subtotal = "<?= /** @noEscape */ $viewModel->getOrderSubtotal($orderId) ?>";
+        _GUARANTEE.Guarantee.currency = "<?= /** @noEscape */ $viewModel->getOrderCurrencyCode($orderId) ?>";
+        _GUARANTEE.Guarantee.email = <?= /** @noEscape */ $viewModel->getOrderCustomerEmail($orderId) ?>;
+        _GUARANTEE.WriteGuarantee();
+    }
+</script>
+<!-- buySAFE Guarantee -->

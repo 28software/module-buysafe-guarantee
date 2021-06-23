@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 28Software (https://28software.com)
+ * See LICENSE for the license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="TESoftware_BuySafeGuarantee">
+        <sequence>
+            <module name="Magento_Checkout"/>
+            <module name="Magento_Sales"/>
+        </sequence>
+    </module>
+</config>

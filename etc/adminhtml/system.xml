@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 28Software (https://28software.com)
+ * See LICENSE for the license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="buysafe" translate="label" type="text" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>BuySAFE</label>
+            <tab>sales</tab>
+            <resource>TESoftware_BuySafeGuarantee::general</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>BuySAFE</label>
+                <field id="store_number" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Store Number</label>
+                    <validate>digits</validate>
+                </field>
+                <field id="active" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable BuySAFE Guarantee</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Add order information at checkout success page</comment>
+                    <requires>
+                        <field id="store_number">1</field>
+                    </requires>
+                </field>
+                <field id="show_guarantee" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Guarantee at checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <requires>
+                        <field id="store_number">1</field>
+                    </requires>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="show_seal" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show seal at all pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <requires>
+                        <field id="store_number">1</field>
+                    </requires>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
