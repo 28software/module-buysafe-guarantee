@@ -20,7 +20,7 @@ $orderId = $block->getOrderId();
         _GUARANTEE.Guarantee.order = "<?= /** @noEscape */ $orderId ?>";
         _GUARANTEE.Guarantee.subtotal = "<?= /** @noEscape */ $viewModel->getOrderSubtotal($orderId) ?>";
         _GUARANTEE.Guarantee.currency = "<?= /** @noEscape */ $viewModel->getOrderCurrencyCode($orderId) ?>";
-        _GUARANTEE.Guarantee.email = <?= /** @noEscape */ $viewModel->getOrderCustomerEmail($orderId) ?>;
+        _GUARANTEE.Guarantee.email = "<?= /** @noEscape */ $viewModel->getOrderCustomerEmail($orderId) ?>";
         _GUARANTEE.WriteGuarantee();
     }
 </script>
