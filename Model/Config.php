@@ -14,9 +14,10 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
  */
 class Config
 {
-    private const PATH_ACTIVE       = 'buysafe/general/active';
-    private const PATH_STORE_NUMBER = 'buysafe/general/store_number';
-    private const PATH_BASE_URL     = 'buysafe/general/base_url';
+    private const PATH_ACTIVE         = 'buysafe/general/active';
+    private const PATH_BASE_PATH      = 'buysafe/general/base_path';
+    private const PATH_SHOW_PDP_IMAGE = 'buysafe/general/show_pdp_image';
+    private const PATH_STORE_NUMBER   = 'buysafe/general/store_number';
 
     /**
      * @var ScopeConfigInterface
@@ -43,6 +44,14 @@ class Config
     }
 
     /**
+     * @return bool
+     */
+    public function isShowPdpImage(): bool
+    {
+        return (bool)$this->scopeConfig->isSetFlag(self::PATH_SHOW_PDP_IMAGE);
+    }
+
+    /**
      * @return string
      */
     public function getStoreNumber(): string
@@ -53,8 +62,8 @@ class Config
     /**
      * @return string
      */
-    public function getBaseUrl(): string
+    public function getBasePath(): string
     {
-        return (string)$this->scopeConfig->getValue(self::PATH_BASE_URL);
+        return (string)$this->scopeConfig->getValue(self::PATH_BASE_PATH);
     }
 }

@@ -12,7 +12,7 @@ use Magento\Sales\Model\Order;
 use TESoftware\BuySafeGuarantee\Model\Config;
 
 /**
- * Class CheckoutTracker
+ * ViewModel Tracker for the BuySafe Guarantee
  */
 class Tracker implements ArgumentInterface
 {
@@ -41,6 +41,8 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Is the module active?
+     *
      * @return bool
      */
     public function isActive(): bool
@@ -49,6 +51,18 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Is the PDP image hidden?
+     *
+     * @return bool
+     */
+    public function isPdpImageHidden(): bool
+    {
+        return !$this->config->isShowPdpImage();
+    }
+
+    /**
+     * Get the store number
+     *
      * @return string
      */
     public function getStoreNumber(): string
@@ -57,14 +71,18 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Get the script URL
+     *
      * @return string
      */
     public function getScriptUrl(): string
     {
-        return $this->config->getBaseUrl() . $this->config->getStoreNumber();
+        return $this->config->getBasePath() . '?SN=' . $this->config->getStoreNumber() . '&t10';
     }
 
     /**
+     * Get the order currency code
+     *
      * @param string $incrementId
      *
      * @return string
@@ -75,6 +93,8 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Get the order subtotal
+     *
      * @param string $incrementId
      *
      * @return float
@@ -85,6 +105,8 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Get the order customer email
+     *
      * @param string $incrementId
      *
      * @return string
@@ -95,6 +117,8 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Get the order by incrementId
+     *
      * @param string $incrementId
      *
      * @return Order

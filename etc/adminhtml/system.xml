@@ -45,6 +45,16 @@
                         <field id="active">1</field>
                     </depends>
                 </field>
+                <field id="show_pdp_image" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show image on PDP</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <requires>
+                        <field id="store_number">1</field>
+                    </requires>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
             </group>
         </section>
     </system>

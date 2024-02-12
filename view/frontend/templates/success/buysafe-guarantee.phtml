@@ -11,17 +11,17 @@ use TESoftware\BuySafeGuarantee\ViewModel\Tracker;
 /** @var Tracker $viewModel */
 
 $viewModel = $block->getViewModel();
-$orderId = $block->getOrderId();
+$incrementId = $block->getOrderId();
 ?>
-<!-- buySAFE Guarantee -->
+<!-- Shopping Guarantee -->
 <script type="text/javascript" src="<?= /** @noEscape */ $viewModel->getScriptUrl() ?>" ></script>
 <script type="text/javascript" >
     if( window._GUARANTEE && _GUARANTEE.Loaded ) {
-        _GUARANTEE.Guarantee.order = "<?= /** @noEscape */ $orderId ?>";
-        _GUARANTEE.Guarantee.subtotal = "<?= /** @noEscape */ $viewModel->getOrderSubtotal($orderId) ?>";
-        _GUARANTEE.Guarantee.currency = "<?= /** @noEscape */ $viewModel->getOrderCurrencyCode($orderId) ?>";
-        _GUARANTEE.Guarantee.email = "<?= /** @noEscape */ $viewModel->getOrderCustomerEmail($orderId) ?>";
+        _GUARANTEE.Guarantee.order = "<?= /** @noEscape */ $incrementId ?>";
+        _GUARANTEE.Guarantee.subtotal = "<?= /** @noEscape */ $viewModel->getOrderSubtotal($incrementId) ?>";
+        _GUARANTEE.Guarantee.currency = "<?= /** @noEscape */ $viewModel->getOrderCurrencyCode($incrementId) ?>";
+        _GUARANTEE.Guarantee.email = "<?= /** @noEscape */ $viewModel->getOrderCustomerEmail($incrementId) ?>";
         _GUARANTEE.WriteGuarantee();
     }
 </script>
-<!-- buySAFE Guarantee -->
+<!-- Shopping Guarantee -->

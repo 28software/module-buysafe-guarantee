@@ -13,7 +13,8 @@
                 <store_number/>
                 <show_guarantee>0</show_guarantee>
                 <show_seal>0</show_seal>
-                <base_url>//guarantee-cdn.com/Web/Seal/gjs.aspx?SN=</base_url>
+                <show_pdp_image>0</show_pdp_image>
+                <base_path>//guarantee-cdn.com/SealCore/api/gjs</base_path>
             </general>
         </buysafe>
     </default>

@@ -15,6 +15,15 @@ $viewModel = $block->getViewModel();
 $orderId = $block->getOrderId();
 
 ?>
-<!-- BEGIN: buySAFE Seal -->
+<!-- Shopping Guarantee Seal -->
 <script type="text/javascript" src="<?= /** @noEscape */ $viewModel->getScriptUrl() ?>"></script>
-<!-- END: buySAFE Seal -->
+<?php if ($viewModel->isPdpImageHidden()): ?>
+<style>
+    span[id='Kicker Custom Minimal2_1'], span[id='Kicker Custom Minimal2_2'] {
+        display: none !important;
+    }
+    ._GUARANTEE_Kicker_Container {
+        display: none !important;
+    }
+</style>
+<?php endif; ?>
