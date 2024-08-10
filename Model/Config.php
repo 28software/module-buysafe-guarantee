@@ -9,15 +9,14 @@ namespace TESoftware\BuySafeGuarantee\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
-/**
- * Class Config
- */
 class Config
 {
-    private const PATH_ACTIVE         = 'buysafe/general/active';
-    private const PATH_BASE_PATH      = 'buysafe/general/base_path';
-    private const PATH_SHOW_PDP_IMAGE = 'buysafe/general/show_pdp_image';
-    private const PATH_STORE_NUMBER   = 'buysafe/general/store_number';
+    private const PATH_ACTIVE                     = 'buysafe/general/active';
+    private const PATH_BASE_PATH                  = 'buysafe/general/base_path';
+    private const PATH_SHOW_PDP_IMAGE             = 'buysafe/general/show_pdp_image';
+    private const PATH_STORE_NUMBER               = 'buysafe/general/store_number';
+    private const PATH_SHOW_SEAL                  = 'buysafe/general/show_seal';
+    private const PATH_SHOW_GUARANTEE_AT_CHECKOUT = 'buysafe/general/show_guarantee';
 
     /**
      * @var ScopeConfigInterface
@@ -36,6 +35,8 @@ class Config
     }
 
     /**
+     * Is active?
+     *
      * @return bool
      */
     public function isActive(): bool
@@ -44,6 +45,8 @@ class Config
     }
 
     /**
+     * Is show PDP image?
+     *
      * @return bool
      */
     public function isShowPdpImage(): bool
@@ -52,6 +55,8 @@ class Config
     }
 
     /**
+     * Get store number
+     *
      * @return string
      */
     public function getStoreNumber(): string
@@ -60,10 +65,32 @@ class Config
     }
 
     /**
+     * Get base path
+     *
      * @return string
      */
     public function getBasePath(): string
     {
         return (string)$this->scopeConfig->getValue(self::PATH_BASE_PATH);
+    }
+
+    /**
+     * Is show seal badge?
+     *
+     * @return bool
+     */
+    public function isShowSeal(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::PATH_SHOW_SEAL);
+    }
+
+    /**
+     * Is show guarantee at checkout?
+     *
+     * @return bool
+     */
+    public function isShowGuaranteeAtCheckout(): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::PATH_SHOW_GUARANTEE_AT_CHECKOUT);
     }
 }

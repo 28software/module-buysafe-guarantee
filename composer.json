@@ -1,19 +1,20 @@
 {
     "name": "28software/module-buysafe-guarantee",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "BuySAFE Guarantee module for Magento 2",
     "type": "magento2-module",
     "license": "MIT",
     "authors": [
         {
             "name": "Serhii Koval",
-            "email": "skoval@28software.com"
+            "email": "sergiy.koval@gmail.com"
         }
     ],
     "require": {
         "magento/framework": ">=101.0.0",
         "magento/module-checkout": "~100",
-        "magento/module-sales": "~102|~103"
+        "magento/module-sales": "~102|~103",
+        "php": "^8.1"
     },
     "autoload": {
         "files": [

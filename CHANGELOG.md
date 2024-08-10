@@ -1,3 +1,10 @@
+v1.1.1
+---
+
+- Add async load for BuySafe script
+- Add support for Hyva theme
+- Backward incompatibility: only PHP 8.1 and Magento 2.4.3 and higher are supported
+
 v1.1.0
 ---
 

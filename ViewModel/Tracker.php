@@ -17,14 +17,9 @@ use TESoftware\BuySafeGuarantee\Model\Config;
 class Tracker implements ArgumentInterface
 {
     /**
-     * @var Config
+     * @var bool
      */
-    private $config;
-
-    /**
-     * @var Order
-     */
-    private $order;
+    private $isLoaded = false;
 
     /**
      * CheckoutTracker constructor.
@@ -33,11 +28,9 @@ class Tracker implements ArgumentInterface
      * @param Order  $order
      */
     public function __construct(
-        Config $config,
-        Order $order
+        private readonly Config $config,
+        private readonly Order $order
     ) {
-        $this->config = $config;
-        $this->order = $order;
     }
 
     /**
@@ -93,6 +86,26 @@ class Tracker implements ArgumentInterface
     }
 
     /**
+     * Is script loaded?
+     *
+     * @return bool
+     */
+    public function isScriptLoaded(): bool
+    {
+        return $this->isLoaded;
+    }
+
+    /**
+     * Is script loaded?
+     *
+     * @return bool
+     */
+    public function setIsScriptLoaded(): bool
+    {
+        return $this->isLoaded = true;
+    }
+
+    /**
      * Get the order subtotal
      *
      * @param string $incrementId
@@ -114,6 +127,26 @@ class Tracker implements ArgumentInterface
     public function getOrderCustomerEmail(string $incrementId): string
     {
         return $this->getOrder($incrementId)->getCustomerEmail();
+    }
+
+    /**
+     * Is show seal badge?
+     *
+     * @return bool
+     */
+    public function isShowSeal(): bool
+    {
+        return $this->config->isShowSeal();
+    }
+
+    /**
+     * Is show guarantee at checkout?
+     *
+     * @return bool
+     */
+    public function isShowGuaranteeAtCheckout(): bool
+    {
+        return $this->config->isShowGuaranteeAtCheckout();
     }
 
     /**

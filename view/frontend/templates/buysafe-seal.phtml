@@ -5,19 +5,26 @@
  */
 declare(strict_types = 1);
 
+use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
 use TESoftware\BuySafeGuarantee\ViewModel\Tracker;
 
+/** @var Escaper $escaper */
 /** @var Template $block */
 /** @var Tracker $viewModel */
 
 $viewModel = $block->getViewModel();
 $orderId = $block->getOrderId();
-
 ?>
+<?php if ($viewModel->isShowSeal()): ?>
 <!-- Shopping Guarantee Seal -->
-<script type="text/javascript" src="<?= /** @noEscape */ $viewModel->getScriptUrl() ?>"></script>
-<?php if ($viewModel->isPdpImageHidden()): ?>
+<script>
+    const script = document.createElement('script')
+    script.src = '<?= $escaper->escapeJs($viewModel->getScriptUrl()) ?>';
+    script.type = 'text/javascript';
+    document.head.append(script);
+</script>
+    <?php if ($viewModel->isPdpImageHidden()): ?>
 <style>
     span[id='Kicker Custom Minimal2_1'], span[id='Kicker Custom Minimal2_2'] {
         display: none !important;
@@ -26,4 +33,6 @@ $orderId = $block->getOrderId();
         display: none !important;
     }
 </style>
+    <?php endif; ?>
+<!-- /Shopping Guarantee Seal -->
 <?php endif; ?>
