@@ -1,3 +1,8 @@
+v1.1.2
+---
+
+- Fixes issue for BuySAFE Guarantee at checkout
+
 v1.1.1
 ---
 

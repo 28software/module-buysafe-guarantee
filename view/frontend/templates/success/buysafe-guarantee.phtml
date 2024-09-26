@@ -17,24 +17,24 @@ $viewModel = $block->getViewModel();
 $incrementId = $block->getOrderId();
 ?>
 <?php if ($viewModel->isShowGuaranteeAtCheckout()): ?>
-<!-- Shopping Guarantee -->
-<script>
-    const script = document.createElement('script')
-    script.src = '<?= $escaper->escapeJs($viewModel->getScriptUrl()) ?>';
-    script.type = 'text/javascript';
-    script.onload = 'addGuaranteeData()';
-    document.head.append(script);
-</script>
-<script>
-    function addGuaranteeData() {
-        if( window._GUARANTEE && _GUARANTEE.Loaded ) {
-            _GUARANTEE.Guarantee.order = "<?= /** @noEscape */ $incrementId ?>";
-            _GUARANTEE.Guarantee.subtotal = "<?= /** @noEscape */ $viewModel->getOrderSubtotal($incrementId) ?>";
-            _GUARANTEE.Guarantee.currency = "<?= /** @noEscape */ $viewModel->getOrderCurrencyCode($incrementId) ?>";
-            _GUARANTEE.Guarantee.email = "<?= /** @noEscape */ $viewModel->getOrderCustomerEmail($incrementId) ?>";
-            _GUARANTEE.WriteGuarantee();
+    <!-- Shopping Guarantee -->
+    <script>
+        function addGuaranteeData() {
+            if (window._GUARANTEE && _GUARANTEE.Loaded) {
+                _GUARANTEE.Guarantee.order = "<?= $escaper->escapeJs($incrementId) ?>";
+                _GUARANTEE.Guarantee.subtotal = "<?= $escaper->escapeJs($viewModel->getOrderSubtotal($incrementId)) ?>";
+                _GUARANTEE.Guarantee.currency = "<?= $escaper->escapeJs($viewModel->getOrderCurrencyCode($incrementId)) ?>";
+                _GUARANTEE.Guarantee.email = "<?= $escaper->escapeJs($viewModel->getOrderCustomerEmail($incrementId)) ?>";
+                _GUARANTEE.WriteGuarantee();
+            }
         }
-    }
-</script>
-<!-- /Shopping Guarantee -->
+
+        const script = document.createElement('script');
+        script.src = '<?= $escaper->escapeJs($viewModel->getScriptUrl()) ?>';
+        script.type = 'text/javascript';
+        script.async = true;
+        script.onload = addGuaranteeData;
+        document.head.appendChild(script);
+    </script>
+    <!-- /Shopping Guarantee -->
 <?php endif; ?>
